@@ -101,8 +101,8 @@ app.use(cookieParser())
 
 app.use(respondEmpty)
 addAutoResponses([ 'GET', '/favicon.ico', 404 ], [ 'GET', /^\/api\/v1\/gameon/, 404 ])
-
-const httpServer = app.listen(process.env.PORT, '0.0.0.0')
+const PORT = process.env.PORT || 3000;
+const httpServer = app.listen(PORT, '0.0.0.0')
 
 connectionTracker.trackConnectionsOn(httpServer)
 
