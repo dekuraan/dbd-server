@@ -103,13 +103,8 @@ app.use(respondEmpty)
 addAutoResponses([ 'GET', '/favicon.ico', 404 ], [ 'GET', /^\/api\/v1\/gameon/, 404 ])
 
 const httpServer = app.listen(process.env.PORT, '0.0.0.0')
-const httpsServer = https.createServer({
-    key: fs.readFileSync(path.join('private', 'privatekey.key')),
-    cert: fs.readFileSync(path.join('private', 'cert.crt')),
-}, app)
-httpsServer.listen(443, '0.0.0.0')
 
-connectionTracker.trackConnectionsOn(httpServer, httpsServer)
+connectionTracker.trackConnectionsOn(httpServer)
 
 const njkEnv = nunjucks.configure(['src/templates/'], {
     autoescape: false,
