@@ -2,6 +2,9 @@
   "type": "module",
   "name": "dbd-server",
   "version": "1.7.2",
+  "engines": {
+    "node": "14.x"
+  }
   "description": "",
   "main": "server.js",
   "dependencies": {
