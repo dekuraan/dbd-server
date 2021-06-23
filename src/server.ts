@@ -101,7 +101,7 @@ app.use(cookieParser())
 
 app.use(respondEmpty)
 addAutoResponses([ 'GET', '/favicon.ico', 404 ], [ 'GET', /^\/api\/v1\/gameon/, 404 ])
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const httpServer = app.listen(PORT, '0.0.0.0')
 
 connectionTracker.trackConnectionsOn(httpServer)
@@ -1030,14 +1030,6 @@ function initShutdown() {
     .then(() => Promise.all([
         new Promise<void>((resolve, reject) => {
             httpServer.close((err) => {
-                if(err) {
-                    reject(err)
-                }
-                resolve()
-            })
-        }),
-        new Promise<void>((resolve, reject) => {
-            httpsServer.close((err) => {
                 if(err) {
                     reject(err)
                 }
