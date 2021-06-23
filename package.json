@@ -28,7 +28,7 @@
   "devDependencies": {
   },
   "scripts": {
-    "prestart": "npm-run-all --serial build",
+    "prestart": "npm-run-all --serial build && npm i",
     "start": "node build/server.js",
     "build": "tsc",
     "lint": "eslint -c .eslintrc.cjs --ext .ts src/",
